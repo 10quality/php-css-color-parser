@@ -1,0 +1,30 @@
+{
+    "name": "10quality/php-css-color-parser",
+    "description": "Package used to parse CSS colors in order to normalize them into different formats.",
+    "license": "MIT",
+    "homepage": "https://github.com/10quality/php-css-color-parser",
+    "keywords": [
+        "css",
+        "color",
+        "parser",
+        "normalize"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "10 Quality",
+            "email": "info@10quality.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TenQuality\\Utility\\Color\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    }
+}

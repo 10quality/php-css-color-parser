@@ -113,6 +113,25 @@ class CssParser
             ->toArgb();
     }
     /**
+     * Returns color as a normalized RGBA code.
+     * STATIC CONSTRUCTOR.
+     * @since 1.0.0
+     *
+     * @param string $color    CSS color to parse.
+     * @param array  $labels   Additional CSS labels to parse in `parseColorLabels()`.
+     * @param array  $hexCodes HEX Codes of the additional CSS labels to parse in `parseColorLabels()`.
+     *
+     * @return string
+     */
+    public static function rgba($color, $labels = [], $hexCodes = [])
+    {
+        $parser = new self($color, $labels, $hexCodes);
+        return $parser->applyFilters()
+            ->normalizeAbbreviations()
+            ->parseColorLabels()
+            ->toRgba();
+    }
+    /**
      * Applies basic filters:
      * - trim.
      * - upper case conversion.
@@ -209,7 +228,7 @@ class CssParser
         return '#'.str_pad($this->color, 8, '0');
     }
     /**
-     * Returns color's RGBA code.
+     * Returns color's ARGB code.
      * @since 1.0.0
      *
      * @return string
@@ -217,5 +236,23 @@ class CssParser
     public function toArgb()
     {
         return '0x'.str_pad(str_replace('#', '', $this->color), 8, '0');
+    }
+    /**
+     * Returns color's RGBA code.
+     * @since 1.0.1
+     *
+     * @see http://php.net/manual/en/function.hexdec.php
+     *
+     * @return string
+     */
+    public function toRgba()
+    {
+        return sprintf(
+            'rgba(%d,%d,%d,%s)',
+            hexdec(substr($this->color, 0, 2)),
+            hexdec(substr($this->color, 2, 2)),
+            hexdec(substr($this->color, 4, 2)),
+            round(hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : 'FF') / 255, 2)
+        );
     }
 }

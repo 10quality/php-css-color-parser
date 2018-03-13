@@ -68,4 +68,18 @@ class ParserTest extends PHPUnit_Framework_TestCase
             CssParser::hex('89cc7F')
         );
     }
+    public function testRgba()
+    {
+        $this->assertEquals(
+            'rgba(57,115,157,0.53)',
+            CssParser::rgba('#39739d88')
+        );
+    }
+    public function testRgbaOpaque()
+    {
+        $this->assertEquals(
+            'rgba(57,115,157,1)',
+            CssParser::rgba('#39739d')
+        );
+    }
 }

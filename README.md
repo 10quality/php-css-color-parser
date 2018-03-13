@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/10quality/php-css-color-parser/downloads)](https://packagist.org/packages/10quality/php-css-color-parser)
 [![License](https://poser.pugx.org/10quality/php-css-color-parser/license)](https://packagist.org/packages/10quality/php-css-color-parser)
 
-A little package used to parse CSS colors in order to normalize them into different formats (supported: hex and argb).
+A little package used to parse CSS colors in order to normalize them into different formats (supported: hex, argb and rgba).
 
 ## Requirements
 
@@ -62,12 +62,37 @@ echo CssParser::argb('#4ff');
 echo CssParser::argb('white');
 ```
 
-To add more CSS color labes:
+For RGBA:
+```php
+// This will echo "rgba(57,115,157,0.53)"
+echo CssParser::rgba('#39739d88');
+
+// This will echo "rgba(255,255,255,1)"
+echo CssParser::rgba('white');
+```
+
+### Casting
+
+To return the color's rgba codes as an array:
+```php
+// This will dump the following array "[57,115,157,255]"
+var_dump(CssParser::array('#39739d'));
+```
+
+To return the color's rgba codes as a JSON string:
+```php
+// This will echo "{"red":57,"green":115,"blue":157,"alpha":255}"
+echo CssParser::string('#39739d');
+```
+
+### Extending named colors
+
+To add more CSS named colors:
 ```php
 // This will exho "#00008B"
 echo CssParser::hex('darkblue', ['/darkblue/','/darkgreen/'], ['00008B','006400']);
 ```
-**NOTE:** Second parameter passed by containes the list of additional css labels to parse and the third paramener contains its HEX code in caps and without the hashtag character.
+**NOTE:** Second parameter passed by containes the list of additional css labels (names) to parse and the third paramener contains its HEX code in caps and without the hashtag character.
 
 ## Copyright & License
 

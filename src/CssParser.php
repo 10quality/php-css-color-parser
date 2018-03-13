@@ -115,7 +115,7 @@ class CssParser
     /**
      * Returns color as a normalized RGBA code.
      * STATIC CONSTRUCTOR.
-     * @since 1.0.0
+     * @since 1.0.1
      *
      * @param string $color    CSS color to parse.
      * @param array  $labels   Additional CSS labels to parse in `parseColorLabels()`.
@@ -130,6 +130,43 @@ class CssParser
             ->normalizeAbbreviations()
             ->parseColorLabels()
             ->toRgba();
+    }
+    /**
+     * Returns color array with RGBA codes.
+     * STATIC CONSTRUCTOR.
+     * @since 1.0.1
+     *
+     * @param string $color    CSS color to parse.
+     * @param array  $labels   Additional CSS labels to parse in `parseColorLabels()`.
+     * @param array  $hexCodes HEX Codes of the additional CSS labels to parse in `parseColorLabels()`.
+     *
+     * @return array
+     */
+    public static function array($color, $labels = [], $hexCodes = [])
+    {
+        $parser = new self($color, $labels, $hexCodes);
+        return $parser->applyFilters()
+            ->normalizeAbbreviations()
+            ->parseColorLabels()
+            ->toArray();
+    }
+    /**
+     * Returns color's RGBA codes as a json array.
+     * STATIC CONSTRUCTOR.
+     * @since 1.0.1
+     *
+     * @param string $color    CSS color to parse.
+     * @param array  $labels   Additional CSS labels to parse in `parseColorLabels()`.
+     * @param array  $hexCodes HEX Codes of the additional CSS labels to parse in `parseColorLabels()`.
+     *
+     * @return string
+     */
+    public static function string($color, $labels = [], $hexCodes = [])
+    {
+        $parser = new self($color, $labels, $hexCodes);
+        return (string)$parser->applyFilters()
+            ->normalizeAbbreviations()
+            ->parseColorLabels();
     }
     /**
      * Applies basic filters:
@@ -254,5 +291,38 @@ class CssParser
             hexdec(substr($this->color, 4, 2)),
             round(hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : 'FF') / 255, 2)
         );
+    }
+    /**
+     * Returns color's RGBA codes as array.
+     * @since 1.0.1
+     *
+     * @see http://php.net/manual/en/function.hexdec.php
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            hexdec(substr($this->color, 0, 2)),
+            hexdec(substr($this->color, 2, 2)),
+            hexdec(substr($this->color, 4, 2)),
+            hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : 'FF')
+        ];
+    }
+    /**
+     * Returns color's RGBA codes as a json string.
+     * @since 1.0.1
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        $color = $this->toArray();
+        return json_encode([
+            'red'   => $color[0],
+            'green' => $color[1],
+            'blue'  => $color[2],
+            'alpha' => $color[3]
+        ]);
     }
 }

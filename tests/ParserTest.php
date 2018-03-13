@@ -8,7 +8,7 @@ use TenQuality\Utility\Color\CssParser;
  * @author Cami Mostajo
  * @package TenQuality\Utility\Colors
  * @license MIT
- * @version 1.0.0
+ * @version 1.0.1
  */
 class ParserTest extends PHPUnit_Framework_TestCase
 {
@@ -80,6 +80,20 @@ class ParserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             'rgba(57,115,157,1)',
             CssParser::rgba('#39739d')
+        );
+    }
+    public function testArray()
+    {
+        $this->assertEquals(
+            [57,115,157,255],
+            CssParser::array('#39739d')
+        );
+    }
+    public function testString()
+    {
+        $this->assertEquals(
+            '{"red":57,"green":115,"blue":157,"alpha":255}',
+            CssParser::string('#39739d')
         );
     }
 }

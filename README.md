@@ -29,6 +29,9 @@ echo CssParser::hex('#4ff');
 
 // This will echo "#FFFFFF"
 echo CssParser::hex('white');
+
+// This will echo "#89CC7F"
+echo CssParser::hex('89cc7F');
 ```
 
 For a normalized HEX code (with transparency):

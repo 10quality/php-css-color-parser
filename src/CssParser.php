@@ -262,7 +262,7 @@ class CssParser
      */
     public function toHexTransparent()
     {
-        return '#'.str_pad($this->color, 8, '0');
+        return '#'.str_pad($this->color, 8, 'F');
     }
     /**
      * Returns color's ARGB code.
@@ -272,7 +272,7 @@ class CssParser
      */
     public function toArgb()
     {
-        return '0x'.str_pad(str_replace('#', '', $this->color), 8, '0');
+        return '0x'.str_pad(str_replace('#', '', $this->color), 8, 'F');
     }
     /**
      * Returns color's RGBA code.

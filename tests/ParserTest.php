@@ -36,14 +36,14 @@ class ParserTest extends PHPUnit_Framework_TestCase
     public function testHexTransparentPadding()
     {
         $this->assertEquals(
-            '#FFFFFF00',
+            '#FFFFFFFF',
             CssParser::hexTransparent('#fff')
         );
     }
     public function testArgb()
     {
         $this->assertEquals(
-            '0xFF885500',
+            '0xFF8855FF',
             CssParser::argb('#f85')
         );
     }

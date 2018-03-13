@@ -43,10 +43,10 @@ For a normalized HEX code (with transparency):
 // This will echo "#44FCCD44"
 echo CssParser::hexTransparent('#44fCCd44');
 
-// This will echo "#44FFFF00"
+// This will echo "#44FFFFFF"
 echo CssParser::hexTransparent('#4ff');
 
-// This will echo "#FFFFFF00"
+// This will echo "#FFFFFFFF"
 echo CssParser::hexTransparent('white');
 ```
 
@@ -55,10 +55,10 @@ For ARGB:
 // This will echo "0x44FCCD44"
 echo CssParser::argb('#44fCCd44');
 
-// This will echo "0x44FFFF00"
+// This will echo "0x44FFFFFF"
 echo CssParser::argb('#4ff');
 
-// This will echo "0xFFFFFF00"
+// This will echo "0xFFFFFFFF"
 echo CssParser::argb('white');
 ```
 

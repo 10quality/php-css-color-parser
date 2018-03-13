@@ -1,5 +1,9 @@
 # CSS Color Parser
 
+[![Latest Stable Version](https://poser.pugx.org/10quality/php-css-color-parser/v/stable)](https://packagist.org/packages/10quality/php-css-color-parser)
+[![Total Downloads](https://poser.pugx.org/10quality/php-css-color-parser/downloads)](https://packagist.org/packages/10quality/php-css-color-parser)
+[![License](https://poser.pugx.org/10quality/php-css-color-parser/license)](https://packagist.org/packages/10quality/php-css-color-parser)
+
 A little package used to parse CSS colors in order to normalize them into different formats (supported: hex and argb).
 
 ## Requirements

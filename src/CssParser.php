@@ -8,7 +8,7 @@ namespace TenQuality\Utility\Color;
  * @author Cami Mostajo
  * @package TenQuality\Utility\Colors
  * @license MIT
- * @version 1.0.0
+ * @version 1.0.3
  */
 class CssParser
 {
@@ -267,12 +267,13 @@ class CssParser
     /**
      * Returns color's ARGB code.
      * @since 1.0.0
+     * @since 1.0.3 Fixes ARGB format.
      *
      * @return string
      */
     public function toArgb()
     {
-        return '0x'.str_pad(str_replace('#', '', $this->color), 8, 'F');
+        return '0x'.str_pad(substr($this->color, 6, 2).substr($this->color, 0, 6), 8, 'F', STR_PAD_LEFT);
     }
     /**
      * Returns color's RGBA code.

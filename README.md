@@ -52,10 +52,10 @@ echo CssParser::hexTransparent('white');
 
 For ARGB:
 ```php
-// This will echo "0x44FCCD44"
+// This will echo "0x4444FCCD"
 echo CssParser::argb('#44fCCd44');
 
-// This will echo "0x44FFFFFF"
+// This will echo "0xFF44FFFF"
 echo CssParser::argb('#4ff');
 
 // This will echo "0xFFFFFFFF"

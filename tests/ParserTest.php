@@ -112,16 +112,21 @@ class ParserTest extends PHPUnit_Framework_TestCase
     }
     public function testAlpha()
     {
-        CssParser::setAlpha('0');
+        CssParser::setAlpha(CssParser::ALPHA_TRANSPARENT);
         $this->assertEquals(
             '0x00DBDD3C',
             CssParser::argb('#dbdd3c')
         );
         // Restore
-        CssParser::setAlpha('F');
+        CssParser::setAlpha(CssParser::ALPHA_OPAQUE);
         $this->assertEquals(
             '0xFFDBDD3C',
             CssParser::argb('#dbdd3c')
         );
+    }
+    public function testConstants()
+    {
+        $this->assertEquals('F', CssParser::ALPHA_OPAQUE);
+        $this->assertEquals('0', CssParser::ALPHA_TRANSPARENT);
     }
 }

@@ -90,6 +90,8 @@ echo CssParser::string('#39739d');
 Default alpha can be changed from `FF` to `00` by calling to the following static method:
 ```php
 CssParser::setAlpha('0');
+// Or
+CssParser::setAlpha(CssParser::ALPHA_TRANSPARENT);
 ```
 
 Resulting in:
@@ -107,6 +109,8 @@ echo CssParser::argb('#4ff');
 To restore the default alpha call:
 ```php
 CssParser::setAlpha('F');
+// Or
+CssParser::setAlpha(CssParser::ALPHA_OPAQUE);
 ```
 
 ### Extending named colors

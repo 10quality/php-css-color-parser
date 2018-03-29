@@ -8,19 +8,36 @@ namespace TenQuality\Utility\Color;
  * @author Cami Mostajo
  * @package TenQuality\Utility\Colors
  * @license MIT
- * @version 1.0.4
+ * @version 1.0.5
  */
 class CssParser
 {
+    /**
+     * Constant used to define a default alpha value.
+     * OPAQUE value.
+     * @since 1.0.5
+     *
+     * @var string
+     */
+    const ALPHA_OPAQUE = 'F';
+    /**
+     * Constant used to define a default alpha value.
+     * OPAQUE value.
+     * @since 1.0.5
+     *
+     * @var string
+     */
+    const ALPHA_TRANSPARENT = '0';
     /**
      * Default alpha code.
      * 'F' will generate 'FF' | 255. Commonly meaning opaque.
      * '0' will generate '00' | 0. Commonly meaning transparent.
      * @since 1.0.4
+     * @since 1.0.5 Use constant as default.
      *
      * @var string
      */
-    protected static $defaultAlpha = 'F';
+    protected static $defaultAlpha = self::ALPHA_OPAQUE;
     /**
      * Raw color being parsed.
      * @since 1.0.0
@@ -183,7 +200,7 @@ class CssParser
      *
      * @param string $code Alpha code between F and 0.
      */
-    public static function setAlpha($code = 'F')
+    public static function setAlpha($code = self::ALPHA_OPAQUE)
     {
         static::$defaultAlpha = $code;
     }

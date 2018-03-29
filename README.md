@@ -85,6 +85,30 @@ To return the color's rgba codes as a JSON string:
 echo CssParser::string('#39739d');
 ```
 
+### Alpha
+
+Default alpha can be changed from `FF` to `00` by calling to the following static method:
+```php
+CssParser::setAlpha('0');
+```
+
+Resulting in:
+```php
+// This will echo "#44FFFF00"
+echo CssParser::hexTransparent('#4ff');
+
+// This will echo "rgba(255,255,255,0)"
+echo CssParser::rgba('white');
+
+// This will echo "0x0044FFFF"
+echo CssParser::argb('#4ff');
+```
+
+To restore the default alpha call:
+```php
+CssParser::setAlpha('F');
+```
+
 ### Extending named colors
 
 To add more CSS named colors:

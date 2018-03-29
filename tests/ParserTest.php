@@ -8,7 +8,7 @@ use TenQuality\Utility\Color\CssParser;
  * @author Cami Mostajo
  * @package TenQuality\Utility\Colors
  * @license MIT
- * @version 1.0.3
+ * @version 1.0.4
  */
 class ParserTest extends PHPUnit_Framework_TestCase
 {
@@ -108,6 +108,20 @@ class ParserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             '0xCC39739D',
             CssParser::argb('#39739dCC')
+        );
+    }
+    public function testAlpha()
+    {
+        CssParser::setAlpha('0');
+        $this->assertEquals(
+            '0x00DBDD3C',
+            CssParser::argb('#dbdd3c')
+        );
+        // Restore
+        CssParser::setAlpha('F');
+        $this->assertEquals(
+            '0xFFDBDD3C',
+            CssParser::argb('#dbdd3c')
         );
     }
 }

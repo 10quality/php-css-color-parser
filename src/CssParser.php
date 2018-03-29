@@ -8,10 +8,19 @@ namespace TenQuality\Utility\Color;
  * @author Cami Mostajo
  * @package TenQuality\Utility\Colors
  * @license MIT
- * @version 1.0.3
+ * @version 1.0.4
  */
 class CssParser
 {
+    /**
+     * Default alpha code.
+     * 'F' will generate 'FF' | 255. Commonly meaning opaque.
+     * '0' will generate '00' | 0. Commonly meaning transparent.
+     * @since 1.0.4
+     *
+     * @var string
+     */
+    protected static $defaultAlpha = 'F';
     /**
      * Raw color being parsed.
      * @since 1.0.0
@@ -169,6 +178,16 @@ class CssParser
             ->parseColorLabels();
     }
     /**
+     * Sets static default alpha code.
+     * @since 1.0.4
+     *
+     * @param string $code Alpha code between F and 0.
+     */
+    public static function setAlpha($code = 'F')
+    {
+        static::$defaultAlpha = $code;
+    }
+    /**
      * Applies basic filters:
      * - trim.
      * - upper case conversion.
@@ -257,27 +276,30 @@ class CssParser
     /**
      * Returns color's hex code (with transparency).
      * @since 1.0.0
+     * @since 1.0.4 Supports default alpha.
      *
      * @return string
      */
     public function toHexTransparent()
     {
-        return '#'.str_pad($this->color, 8, 'F');
+        return '#'.str_pad($this->color, 8, static::$defaultAlpha);
     }
     /**
      * Returns color's ARGB code.
      * @since 1.0.0
      * @since 1.0.3 Fixes ARGB format.
+     * @since 1.0.4 Supports default alpha.
      *
      * @return string
      */
     public function toArgb()
     {
-        return '0x'.str_pad(substr($this->color, 6, 2).substr($this->color, 0, 6), 8, 'F', STR_PAD_LEFT);
+        return '0x'.str_pad(substr($this->color, 6, 2).substr($this->color, 0, 6), 8, static::$defaultAlpha, STR_PAD_LEFT);
     }
     /**
      * Returns color's RGBA code.
      * @since 1.0.1
+     * @since 1.0.4 Supports default alpha.
      *
      * @see http://php.net/manual/en/function.hexdec.php
      *
@@ -290,12 +312,13 @@ class CssParser
             hexdec(substr($this->color, 0, 2)),
             hexdec(substr($this->color, 2, 2)),
             hexdec(substr($this->color, 4, 2)),
-            round(hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : 'FF') / 255, 2)
+            round(hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : static::$defaultAlpha.static::$defaultAlpha) / 255, 2)
         );
     }
     /**
      * Returns color's RGBA codes as array.
      * @since 1.0.1
+     * @since 1.0.4 Supports default alpha.
      *
      * @see http://php.net/manual/en/function.hexdec.php
      *
@@ -307,7 +330,7 @@ class CssParser
             hexdec(substr($this->color, 0, 2)),
             hexdec(substr($this->color, 2, 2)),
             hexdec(substr($this->color, 4, 2)),
-            hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : 'FF')
+            hexdec(strlen($this->color) > 6 ? substr($this->color, 6, 2) : static::$defaultAlpha.static::$defaultAlpha)
         ];
     }
     /**

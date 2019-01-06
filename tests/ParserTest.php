@@ -61,6 +61,13 @@ class ParserTest extends PHPUnit_Framework_TestCase
             CssParser::hex('coral')
         );
     }
+    public function testRedLabel()
+    {
+        $this->assertEquals(
+            '#FF0000',
+            CssParser::hex('red')
+        );
+    }
     public function testNoHastag()
     {
         $this->assertEquals(

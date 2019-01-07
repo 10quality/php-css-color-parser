@@ -96,8 +96,8 @@ class CssParser
     {
         $parser = new self($color, $labels, $hexCodes);
         return $parser->applyFilters()
-            ->normalizeAbbreviations()
             ->parseColorLabels()
+            ->normalizeAbbreviations()
             ->toHex();
     }
     /**
@@ -115,8 +115,8 @@ class CssParser
     {
         $parser = new self($color, $labels, $hexCodes);
         return $parser->applyFilters()
-            ->normalizeAbbreviations()
             ->parseColorLabels()
+            ->normalizeAbbreviations()
             ->toHexTransparent();
     }
     /**
@@ -134,8 +134,8 @@ class CssParser
     {
         $parser = new self($color, $labels, $hexCodes);
         return $parser->applyFilters()
-            ->normalizeAbbreviations()
             ->parseColorLabels()
+            ->normalizeAbbreviations()
             ->toArgb();
     }
     /**
@@ -153,8 +153,8 @@ class CssParser
     {
         $parser = new self($color, $labels, $hexCodes);
         return $parser->applyFilters()
-            ->normalizeAbbreviations()
             ->parseColorLabels()
+            ->normalizeAbbreviations()
             ->toRgba();
     }
     /**
@@ -172,8 +172,8 @@ class CssParser
     {
         $parser = new self($color, $labels, $hexCodes);
         return $parser->applyFilters()
-            ->normalizeAbbreviations()
             ->parseColorLabels()
+            ->normalizeAbbreviations()
             ->toArray();
     }
     /**
@@ -191,8 +191,8 @@ class CssParser
     {
         $parser = new self($color, $labels, $hexCodes);
         return (string)$parser->applyFilters()
-            ->normalizeAbbreviations()
-            ->parseColorLabels();
+            ->parseColorLabels()
+            ->normalizeAbbreviations();
     }
     /**
      * Sets static default alpha code.
